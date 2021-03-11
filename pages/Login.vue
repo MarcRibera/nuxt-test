@@ -1,21 +1,22 @@
 <template lang="html">
     <div class="container">
       <h3 class="title"> Welcome to Nuxt.js</h3>
-      <b-form @submit="onSubmit">
+      <b-form @submit="authenticate">
         <b-form-input
           class="input"
           v-model="user"
           type="text"
           placeholder="Enter email"
-          required>
+          >
         </b-form-input>
         <b-form-input
           class="input"
           v-model="password"
           type="password"
           placeholder="Enter your password"
-          required>
+          >
         </b-form-input>
+        <div class="error-msg" v-if="errorMsg" >{{errorMsg}}</div>
         <b-button type="submit" variant="primary">Submit</b-button>
     </b-form>
   </div>
@@ -23,17 +24,31 @@
 
 <script>
 export default {
-  // layout:'no-navbar',
+  layout:'no-navbar',
   data(){
     return {
       user:'',
-      password:''
+      password:'',
+      errorMsg:'',
+      validUser:{name:'mike', password:'adminadmin'},
     }
   },
   methods:{
-    onSubmit() {
+    authenticate(e) {
+      e.preventDefault()
       console.log(this.$router);
-      this.$router.push('/dashboard')
+      if (
+          this.user === this.validUser.name
+          && this.password === this.validUser.password
+        )
+      {
+        this.$router.push('/dashboard')
+      } else if (this.user === '' || this.user === ''){
+        this.errorMsg = 'Please enter your username and password'
+      } else {
+        this.errorMsg = 'The username or password is wrong'
+      }
+
     }
   }
 
@@ -42,12 +57,15 @@ export default {
 
 <style lang="css" scoped>
 .container {
-  flex-direction: column
+  flex-direction: column;
+  max-width: 400px;
 }
 .title {
   color: deeppink;
   margin: 40px 0px;
   font-weight: 700;
+  text-align: center;
+  font-size: 45px;
 }
 .sign_in {
   display: flex;
@@ -69,12 +87,6 @@ export default {
   border: 1px solid #eee;
   margin-bottom: 20px;
 }
-.message {
-  color: red;
-  font-size: 16px;
-  max-width: 260px;
-  text-align: center;
-}
 .btn {
   margin-top: 40px;
   padding: 16px;
@@ -83,5 +95,10 @@ export default {
   background-color: teal;
   font-size: 18px;
   color: white;
+}
+.error-msg {
+  color: red;
+  font-size: 16px;
+  text-align: center;
 }
 </style>
