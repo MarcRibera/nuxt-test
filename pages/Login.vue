@@ -36,7 +36,6 @@ export default {
   methods:{
     authenticate(e) {
       e.preventDefault()
-      console.log(this.$router);
       if (
           this.user === this.validUser.name
           && this.password === this.validUser.password
