@@ -9,7 +9,7 @@
 export default {
   computed:{
     projectTitle() {
-      return this.$store.state.project_title
+      return this.$store.state.projectTitle
     }
   }
 }
@@ -28,8 +28,8 @@ export default {
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid lightgray;
-    padding-bottom: 24px;
-    margin-bottom: 24px;
+    padding-top: 72px;
+
   }
   p {
     font-style: italic;
