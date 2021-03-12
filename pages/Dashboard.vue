@@ -1,6 +1,9 @@
 <template lang="html">
   <div class="container">
       <h1>Dashboard</h1>
+      <Linechart />
+      <Barchart />
+      <Mapchart />
   </div>
 </template>
 
@@ -16,6 +19,11 @@
             content: 'Dashboard metadata description'
           }
         ]
+      }
+    },
+    data() {
+      return {
+
       }
     }
   }
