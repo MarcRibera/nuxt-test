@@ -7,6 +7,7 @@
         <b-navbar-nav>
           <NuxtLink class="navbar-brand" to="/">Home</NuxtLink>
           <NuxtLink class="navbar-brand" to="/dashboard">Dashboard</NuxtLink>
+          <NuxtLink class="navbar-brand" to="/mountains">Mountains</NuxtLink>
           <NuxtLink class="navbar-brand" to="/settings">Settings</NuxtLink>
         </b-navbar-nav>
 
